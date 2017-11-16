@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import SelectInput from '../common/SelectInput'
 
@@ -11,32 +12,60 @@ class Vendor extends Component {
         console.log("onChange");
     }
 
-    render() {
-        let options = [
-            {
-                value: 1,
-                text: "Vendor Name 1"
-            },
-            {
-                value: 2,
-                text: "Vendor Name 2"
-            },
-            {
-                value: 3,
-                text: "Vendor Name 3"
-            },
-            {
-                value: 4,
-                text: "Vendor Name 4"
+    createSelectOptionsFromVendorArray(vendors) {
+        return vendors.map(vendor =>{
+            return {
+                value: vendor.vendorId,
+                text: vendor.name
             }
+        })
+    }
+
+    render() {
+        let vendors = [
+            {
+                vendorId: 1,
+                name: "Vendor Name 1",
+                ocgNumber: "1234",
+                managingQsAreaId: 2,
+                primaryAddress: "primary address 1"
+
+            },
+            {
+                vendorId: 2,
+                name: "Vendor Name 2",
+                ocgNumber: "1234",
+                managingQsAreaId: 2,
+                primaryAddress: "primary address 2"
+
+            },
+            {
+                vendorId: 1,
+                name: "Vendor Name 1",
+                ocgNumber: "1234",
+                managingQsAreaId: 2,
+                primaryAddress: "primary address 3"
+
+            },
+            {
+                vendorId: 1,
+                name: "Vendor Name 1",
+                ocgNumber: "1234",
+                managingQsAreaId: 2,
+                primaryAddress: "primary address 4"
+
+            },
         ];
 
+        let options = this.createSelectOptionsFromVendorArray(vendors);
 
       return (
         <form>
             <SelectInput name="vendorId" label="Vendor Name:" 
-            onChange={this.onChange} defaultOption="Select vendor" 
-            value="1" error={false} options={options} />
+                onChange={this.onChange} defaultOption="Select vendor" 
+                value="1" error={false} options={options} />
+            
+
 
         </form>
       );
