@@ -4,10 +4,15 @@ import Vendor from './Vendor';
 import Program from './Program';
 
 class App extends Component {
+
   render() {
+    const divStyle = {
+      margin: 20
+    };
+      
     return (
-      <div>
-        <h1>CLBC Workspace</h1>
+      <div style={divStyle} className="container">
+        <h1>CLBC MyWorkspace</h1>
         <h2>Create Draft Program</h2>
         <Vendor />
         <Program />
