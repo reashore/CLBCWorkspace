@@ -2,12 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = ({ name, label, onChange, placeholder, readOnly, value, error }) => {
+const TextInput = ({ name, label, onChange, placeholder, readOnly = false, value, error = "" }) => {
   let wrapperClass = 'form-group';
-
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
   }
+
   let options = {};
   if (readOnly){
     options['readOnly'] = 'readOnly';
