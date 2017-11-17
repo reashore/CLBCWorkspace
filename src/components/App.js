@@ -4,7 +4,6 @@ import Vendor from './Vendor';
 import Program from './Program';
 
 class App extends Component {
-
   render() {
     return (
       <div className="container">
