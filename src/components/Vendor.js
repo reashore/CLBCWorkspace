@@ -24,17 +24,17 @@ class Vendor extends Component {
 
     onChange(event) {
         const { _vendorId, _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
-        let vendorId = parseInt(_vendorId.value, 10);
-        let vendors = getVendors();
-        let vendor = vendors.find(vendor => vendor.vendorId === vendorId);
+        const vendorId = parseInt(_vendorId.value, 10);
+        const vendors = getVendors();
+        const vendor = vendors.find(vendor => vendor.vendorId === vendorId);
         _ocgNumber.value = vendor.ocgNumber;
         _managingQsArea.value = vendor.managingQsArea;
         _primaryAddress.value = vendor.primaryAddress;
     }
 
     render() {
-        let vendors = getVendors();
-        let options = createSelectOptionsFromVendors(vendors);
+        const vendors = getVendors();
+        const options = createSelectOptionsFromVendors(vendors);
 
         return (
             <div className="panel panel-primary">
