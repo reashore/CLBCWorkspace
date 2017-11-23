@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import ProgramData from '../data/ProgramData';
+import DropDownList from '../common/DropDownList';
 
 // import '@progress/kendo-theme-default/dist/all.css';
 // import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
@@ -79,13 +80,20 @@ class Program extends Component {
 
             <div className="form-group">
               <label htmlFor="description">Description:</label>
-              <input type="text" name="description" ref="_description" className="form-control" placeholder="Description" />
+              <textarea name="description" ref="_description" rows="2" className="form-control" placeholder="Description" />
+              {/* <input type="text" name="description" ref="_description" className="form-control" placeholder="Description" /> */}
             </div>
 
             <div className="form-group">
               <label htmlFor="startDate">Start Date:</label>
               <input type="text" name="startDate" ref="_startDate" className="form-control" placeholder="Start Date" />
             </div>
+
+            {/* <DropDownList ddlId="serviceSubcategoryId"
+              ddlRef="_serviceSubcategoryId"
+              onChange={this.onChangeServiceSubcategory}
+              defaultOption="Select Service Subcategory"
+              ddlOptions={serviceSubcategoryOptions} /> */}
 
             <div className="form-group">
               <label htmlFor="serviceSubcategoryId">Service Subcategory:</label>
