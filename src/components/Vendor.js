@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import VendorData from '../data/VendorData';
+import DropDownList from '../common/DropDownList';
 
 class Vendor extends Component {
   constructor(props) {
@@ -24,11 +25,10 @@ class Vendor extends Component {
   }
 
   onChange(event) {
-    // Is it possible to assign refs once, rather than on every onChange?
-    const { _vendorId, _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
-    const vendorId = parseInt(_vendorId.value, 10);
-    const vendors = this.vendors;
-    const vendor = vendors.find(vendor => vendor.vendorId === vendorId);
+    const vendorId = parseInt(this._vendorId.value, 10);
+    const vendor = this.vendors.find(vendor => vendor.vendorId === vendorId);
+
+    const { _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
     _ocgNumber.value = vendor.ocgNumber;
     _managingQsArea.value = vendor.managingQsArea;
     _primaryAddress.value = vendor.primaryAddress;
@@ -42,15 +42,7 @@ class Vendor extends Component {
         <div className="panel-heading">Vendors</div>
         <div className="panel-body">
           <form>
-            <div className="form-group">
-              <label htmlFor="vendorId">Vendor Name:</label>
-              <select name="vendorId" ref="_vendorId" onChange={this.onChange} className="form-control">
-                <option value="">Select Vendor</option>
-                {vendorOptions.map((option) => {
-                  return <option key={option.value} value={option.value}>{option.text}</option>;
-                })}
-              </select>
-            </div>
+            <DropDownList id="vendorId" refId={el => this._vendorId = el} label="Vendor Name:" onChange={this.onChange} options={vendorOptions} />
 
             <div className="form-group">
               <label htmlFor="ocgNumber">OCG Number:</label>
