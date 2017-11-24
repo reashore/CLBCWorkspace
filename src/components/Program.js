@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ProgramData from '../data/ProgramData';
 import PlaceOfService from './PlaceOfService';
 import Community from './Community';
-//import DropDownList from '../common/DropDownList';
+import DropDownList from '../common/DropDownList';
 
 // import '@progress/kendo-theme-default/dist/all.css';
 // import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
@@ -101,28 +101,27 @@ class Program extends Component {
               <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
             </div>
 
-            {/* <DropDownList ddlId="serviceSubcategoryId"
-              ddlRef="_serviceSubcategoryId"
+            <DropDownList id="serviceSubcategoryId"
+              ref="_serviceSubcategoryId"
+              label="Service Subcategory:"
               onChange={this.onChangeServiceSubcategory}
               defaultOption="Select Service Subcategory"
-              ddlOptions={serviceSubcategoryOptions} /> */}
-
-            <div className="form-group">
-              <label htmlFor="serviceSubcategoryId">Service Subcategory:</label>
-              <select name="serviceSubcategoryId" ref="_serviceSubcategoryId" onChange={this.onChangeServiceSubcategory} className="form-control">
-                <option value="">Select Service Subcategory</option>
-                {serviceSubcategoryOptions.map((option) => {
-                  return <option key={option.value} value={option.value}>{option.text}</option>;
-                })}
-              </select>
-            </div>
+              options={serviceSubcategoryOptions} />
 
             {/* <div className="form-group">
               <label htmlFor="startDate">Start Date:</label>
               <Calendar value={this.state.dateTime} change={this.onChangeStartDate} className="form-control" />
             </div> */}
 
-            <div className="form-group">
+            <DropDownList id="fundingModelId"
+              ref="_fundingModelId"
+              label="Funding Model:"
+              onChange={this.onChangeFundingModel}
+              defaultOption="Select Funding Model"
+              options={fundingModelOptions} />
+
+
+            {/* <div className="form-group">
               <label htmlFor="fundingModelId">Funding Model:</label>
               <select name="fundingModelId" ref="_fundingModelId" onChange={this.onChangeFundingModel} className="form-control">
                 <option value="">Select Funding Model</option>
@@ -130,16 +129,24 @@ class Program extends Component {
                   return <option key={option.value} value={option.value}>{option.text}</option>;
                 })}
               </select>
-            </div>
+            </div> */}
 
-            <div className="form-group">
+            <DropDownList id="programTypeId"
+              ref="_programTypeId"
+              label="Program Type:"
+              onChange={this.onChangeProgramType}
+              defaultOption=""
+              options={programTypeOptions} />
+
+
+            {/* <div className="form-group">
               <label htmlFor="programTypeId">Program Type:</label>
               <select name="programTypeId" ref="_programTypeId" onChange={this.onChangeProgramType} className="form-control">
                 {programTypeOptions.map((option) => {
                   return <option key={option.value} value={option.value}>{option.text}</option>;
                 })}
               </select>
-            </div>
+            </div> */}
 
             <div className="container-fluid">
               <div className="row">
