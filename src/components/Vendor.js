@@ -28,6 +28,8 @@ class Vendor extends Component {
     const vendorId = parseInt(this._vendorId.value, 10);
     const vendor = this.vendors.find(vendor => vendor.vendorId === vendorId);
 
+    this.setState({vendorId: vendorId});
+
     const { _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
     _ocgNumber.value = vendor.ocgNumber;
     _managingQsArea.value = vendor.managingQsArea;
