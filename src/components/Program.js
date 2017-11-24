@@ -2,14 +2,13 @@
 import React, { Component } from 'react';
 import ProgramData from '../data/ProgramData';
 import DropDownList from '../common/DropDownList';
-// import PlaceOfService from './PlaceOfService';
-// import Community from './Community';
+import PlaceOfService from './PlaceOfService';
+import Community from './Community';
 
 // import '@progress/kendo-theme-default/dist/all.css';
 // import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
 // import { kendo } from "@progress/kendo-ui";
 
-// todo: Need higher-level component to implement DDLs
 class Program extends Component {
   constructor(props) {
     super(props);
@@ -75,13 +74,13 @@ class Program extends Component {
   render() {
     const serviceSubcategoryOptions = this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories);
     const fundingModelOptions = this.createSelectOptionsFromFundingModels(this.fundingModels);
-    //const programTypeOptions = this.createSelectOptionsFromProgramTypes(this.programTypes);
+    const programTypeOptions = this.createSelectOptionsFromProgramTypes(this.programTypes);
 
     return (
       <div className="panel panel-primary">
         <div className="panel-heading">Program</div>
         <div className="panel-body">
-          <form>
+          {/* <form> */}
 
             <div className="form-group">
               <label htmlFor="programName">Program Name:</label>
@@ -98,13 +97,13 @@ class Program extends Component {
               <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
             </div>
 
-            <DropDownList id="serviceSubcategoryId" refId={el => this._serviceSubcategoryId = el} label="Service Subcategory:"
+            <DropDownList id="serviceSubcategoryId" refId={e => this._serviceSubcategoryId = e} label="Service Subcategory:"
               onChange={this.onChangeServiceSubcategory} options={serviceSubcategoryOptions} />
 
-            <DropDownList id="fundingModelId" refId={el => this._fundingModelId = el} label="Funding Model:"
+            <DropDownList id="fundingModelId" refId={e => this._fundingModelId = e} label="Funding Model:"
               onChange={this.onChangeFundingModel} options={fundingModelOptions} />
 
-            {/* <DropDownList id="programTypeId" refId="_programTypeId" label="Program Type:"
+            <DropDownList id="programTypeId" refId="_programTypeId" label="Program Type:"
               onChange={this.onChangeProgramType} options={programTypeOptions} />
 
             <div className="container-fluid">
@@ -116,10 +115,10 @@ class Program extends Component {
                   <PlaceOfService />
                 </div>
               </div>
-            </div> */}
+            </div>
 
             <button type="Submit" className="btn btn-primary">Save</button>
-          </form>
+          {/* </form> */}
         </div>
       </div>
     );

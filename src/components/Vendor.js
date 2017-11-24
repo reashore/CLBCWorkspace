@@ -41,8 +41,8 @@ class Vendor extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Vendors</div>
         <div className="panel-body">
-          <form>
-            <DropDownList id="vendorId" refId={el => this._vendorId = el} label="Vendor Name:" onChange={this.onChange} options={vendorOptions} />
+          {/* <form> */}
+            <DropDownList id="vendorId" refId={e => this._vendorId = e} label="Vendor Name:" onChange={this.onChange} options={vendorOptions} />
 
             <div className="form-group">
               <label htmlFor="ocgNumber">OCG Number:</label>
@@ -58,7 +58,7 @@ class Vendor extends Component {
               <label htmlFor="primaryAddress">Primary Address:</label>
               <input type="text" name="primaryAddress" ref="_primaryAddress" className="form-control" placeholder="Primary Address" readOnly />
             </div>
-          </form>
+          {/* </form> */}
         </div>
       </div>
     );

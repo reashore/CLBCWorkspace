@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import CommunityData from '../data/CommunityData';
+import DropDownList from '../common/DropDownList';
 
 class Community extends Component {
   constructor(props) {
@@ -27,10 +28,8 @@ class Community extends Component {
   }
 
   onChange(event) {
-   const _cpdAreaId = this.refs._cpdAreaId;
-    const cpdAreaId = parseInt(_cpdAreaId.value, 10);
-    this.setState({cpdAreaId: cpdAreaId})
-    // todo: Load dependent drop downs
+    const cpdAreaId = parseInt(this._cpdAreaId.value, 10);
+    this.setState({ cpdAreaId: cpdAreaId })
   }
 
   render() {
@@ -40,17 +39,9 @@ class Community extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Community</div>
         <div className="panel-body">
-          <form>
-            <div className="form-group">
-              <label htmlFor="cpdAreaId">CPD Area:</label>
-              <select name="cpdAreaId" ref="_cpdAreaId" onChange={this.onChange} className="form-control">
-                <option value="">Select CPD Area</option>
-                {cpdAreaOptions.map((option) => {
-                  return <option key={option.value} value={option.value}>{option.text}</option>;
-                })}
-              </select>
-            </div>
-          </form>
+          {/* <form> */}
+            <DropDownList id="cpdAreaId" refId={e => this._cpdAreaId = e} label="CPD Area:" onChange={this.onChange} options={cpdAreaOptions} />
+          {/* </form> */}
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import PlaceOfServiceData from '../data/PlaceOfServiceData';
+import DropDownList from '../common/DropDownList';
 
 class PlaceOfService extends Component {
   constructor(props) {
@@ -25,8 +26,7 @@ class PlaceOfService extends Component {
   }
 
   onChange(event) {
-    const _placeOfServiceId = this.refs._placeOfServiceId;
-    const placeOfServiceId = parseInt(_placeOfServiceId.value, 10);
+    const placeOfServiceId = parseInt(this._placeOfServiceId.value, 10);
     this.setState({ placeOfServiceId: placeOfServiceId })
   }
 
@@ -37,19 +37,11 @@ class PlaceOfService extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Place of Service</div>
         <div className="panel-body">
-          <form>
-            <div className="form-group">
-              <label htmlFor="placeOfServiceId">Place of Service:</label>
-              <select name="placeOfServiceId" ref="_placeOfServiceId" onChange={this.onChange} className="form-control">
-                <option value="">Select Place of Service</option>
-                {placeOfServiceOptions.map((option) => {
-                  return <option key={option.value} value={option.value}>{option.text}</option>;
-                })}
-              </select>
-            </div>
+          {/* <form> */}
+          <DropDownList id="placeOfServiceId" refId={e => this._placeOfServiceId = e} label="Place of Service:" onChange={this.onChange} options={placeOfServiceOptions} />
 
-            <button type="Submit" className="btn btn-primary">Create Place of Service</button>
-          </form>
+          <button type="Submit" className="btn btn-primary">Create Place of Service</button>
+          {/* </form> */}
         </div>
       </div>
     );

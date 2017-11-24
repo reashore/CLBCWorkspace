@@ -9,8 +9,10 @@ class App extends Component {
       <div className="container">
         <h1>CLBC MyWorkspace</h1>
         <h2>Create Draft Program</h2>
-        <Vendor />
-        <Program />
+        <form>
+          <Vendor />
+          <Program />
+        </form>
       </div>
     );
   }
