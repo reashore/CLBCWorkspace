@@ -1,74 +1,59 @@
 
 import React, { Component } from 'react';
-import getVendors from '../data/getVendors';
-
-const createSelectOptionsFromPlaceofService = vendors => {
-    return vendors.map(vendor => {
-        return {
-            value: vendor.vendorId,
-            text: vendor.name
-        };
-    });
-}
+import PlaceOfServiceData from '../data/PlaceOfServiceData';
 
 class PlaceOfService extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            placeOfServices: PlaceofServiceData.gegetVendors()
-        }
+  constructor(props) {
+    super(props);
 
-        this.onChange = this.onChange.bind(this);
+    this.state = {
+      placeOfServiceid: undefined
     }
 
-    onChange(event) {
-        const { _vendorId, _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
-        const vendorId = parseInt(_vendorId.value, 10);
-        const vendors = getVendors();
-        const vendor = vendors.find(vendor => vendor.vendorId === vendorId);
-        _ocgNumber.value = vendor.ocgNumber;
-        _managingQsArea.value = vendor.managingQsArea;
-        _primaryAddress.value = vendor.primaryAddress;
-    }
+    this.placeOfServices = PlaceOfServiceData.getPlaceOfServices();
 
-    render() {
-        const vendors = getVendors();
-        const options = createSelectOptionsFromVendors(vendors);
+    this.onChange = this.onChange.bind(this);
+  }
 
-        return (
-            <div className="panel panel-primary">
-                <div className="panel-heading">Vendors</div>
-                <div className="panel-body">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="vendorId">Vendor Name:</label>
-                            <select name="vendorId" ref="_vendorId" onChange={this.onChange} className="form-control">
-                                <option value="">Select Vendor</option>
-                                {options.map((option) => {
-                                    return <option key={option.value} value={option.value}>{option.text}</option>;
-                                })}
-                            </select>
-                        </div>
+  createSelectOptionsFromPlaceofServices(placeOfServices) {
+    return placeOfServices.map(placeOfService => {
+      return {
+        value: placeOfService.placeOfServiceId,
+        text: placeOfService.placeOfService
+      };
+    });
+  }
 
-                        <div className="form-group">
-                            <label htmlFor="ocgNumber">OCG Number:</label>
-                            <input type="text" name="ocgNumber" ref="_ocgNumber" className="form-control" placeholder="OCG Number" readOnly />
-                        </div>
+  onChange(event) {
+    const _placeOfServiceId = this.refs._placeOfServiceId;
+    const placeOfServiceId = parseInt(_placeOfServiceId.value, 10);
+    this.setState({ placeOfServiceId: placeOfServiceId })
+  }
 
-                        <div className="form-group">
-                            <label htmlFor="managingQsArea">Managing QS Area:</label>
-                            <input type="text" name="managingQsArea" ref="_managingQsArea" className="form-control" placeholder="Managing Qs Area" readOnly />
-                        </div>
+  render() {
+    const placeOfServiceOptions = this.createSelectOptionsFromPlaceofServices(this.placeOfServices);
 
-                        <div className="form-group">
-                            <label htmlFor="primaryAddress">Primary Address:</label>
-                            <input type="text" name="primaryAddress" ref="_primaryAddress" className="form-control" placeholder="Primary Address" readOnly />
-                        </div>
-                    </form>
-                </div>
+    return (
+      <div className="panel panel-primary">
+        <div className="panel-heading">Place of Service</div>
+        <div className="panel-body">
+          <form>
+            <div className="form-group">
+              <label htmlFor="placeOfServiceId">Place of Service:</label>
+              <select name="placeOfServiceId" ref="_placeOfServiceId" onChange={this.onChange} className="form-control">
+                <option value="">Select Place of Service</option>
+                {placeOfServiceOptions.map((option) => {
+                  return <option key={option.value} value={option.value}>{option.text}</option>;
+                })}
+              </select>
             </div>
-        );
-    }
+
+            <button type="Submit" className="btn btn-primary">Create Place of Service</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Vendor;
+export default PlaceOfService;

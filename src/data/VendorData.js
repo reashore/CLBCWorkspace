@@ -52,65 +52,6 @@ class VendorData {
         primaryAddress: "Primary Address 7"
       }
     ];
-
-  // static getPlaceofServices() {
-  //   return [
-  //     {
-  //       placeofServiceId: 1,
-  //       placeofService: "placeOfService1"
-  //     },
-  //     {
-  //       placeofServiceId: 2,
-  //       placeofService: "placeOfService2"
-  //     },
-  //     {
-  //       placeofServiceId: 3,
-  //       placeofService: "placeOfService3"
-  //     },
-  //     {
-  //       placeofServiceId: 4,
-  //       placeofService: "placeOfService4"
-  //     },
-  //     {
-  //       placeofServiceId: 5,
-  //       placeofService: "placeOfService5"
-  //     },
-  //     {
-  //       placeofServiceId: 6,
-  //       placeofService: "placeOfService6"
-  //     }
-  //   ];
-  // }
-
-  // static getFundingModel() {
-  //   return [
-  //     {
-  //       fundingModelId: 1,
-  //       fundingModel: "fundingModel1"
-  //     },
-  //     {
-  //       fundingModelId: 2,
-  //       fundingModel: "fundingModel2"
-  //     },
-  //     {
-  //       fundingModelId: 3,
-  //       fundingModel: "fundingModel3"
-  //     },
-  //     {
-  //       fundingModelId: 4,
-  //       fundingModel: "fundingModel4"
-  //     },
-  //     {
-  //       fundingModelId: 5,
-  //       fundingModel: "fundingModel5"
-  //     },
-  //     {
-  //       fundingModelId: 6,
-  //       fundingModel: "fundingModel6"
-  //     },
-  //   ];
-
-  // }
 }
 
 export default VendorData;

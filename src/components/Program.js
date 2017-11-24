@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
 import ProgramData from '../data/ProgramData';
-import DropDownList from '../common/DropDownList';
+import PlaceOfService from './PlaceOfService';
+import Community from './Community';
+//import DropDownList from '../common/DropDownList';
 
 // import '@progress/kendo-theme-default/dist/all.css';
 // import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
@@ -46,6 +48,15 @@ class Program extends Component {
     });
   }
 
+  createSelectOptionsFromProgramTypes(programTypes) {
+    return programTypes.map(programType => {
+      return {
+        value: programType.programTypeId,
+        text: programType.programType
+      };
+    });
+  }
+
   onChangeStartDate(event) {
     let selectedDate = event.sender.value();
     this.setState({ startDate: selectedDate });
@@ -66,6 +77,7 @@ class Program extends Component {
   render() {
     const serviceSubcategoryOptions = this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories);
     const fundingModelOptions = this.createSelectOptionsFromFundingModels(this.fundingModels);
+    const programTypeOptions = this.createSelectOptionsFromProgramTypes(this.programTypes);
 
     return (
       <div className="panel panel-primary">
@@ -75,18 +87,18 @@ class Program extends Component {
 
             <div className="form-group">
               <label htmlFor="programName">Program Name:</label>
-              <input type="text" name="programName" ref="_programName" className="form-control" placeholder="Program Name" />
+              <input type="text" name="programName" ref="_programName" className="form-control" required placeholder="Program Name" />
             </div>
 
             <div className="form-group">
               <label htmlFor="description">Description:</label>
-              <textarea name="description" ref="_description" rows="2" className="form-control" placeholder="Description" />
+              <textarea name="description" ref="_description" rows="2" className="form-control" required placeholder="Description" />
               {/* <input type="text" name="description" ref="_description" className="form-control" placeholder="Description" /> */}
             </div>
 
             <div className="form-group">
               <label htmlFor="startDate">Start Date:</label>
-              <input type="text" name="startDate" ref="_startDate" className="form-control" placeholder="Start Date" />
+              <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
             </div>
 
             {/* <DropDownList ddlId="serviceSubcategoryId"
@@ -121,13 +133,23 @@ class Program extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="fundingModelId">Funding Model:</label>
-              <select name="fundingModelId" ref="_fundingModelId" onChange={this.onChangeFundingModel} className="form-control">
-                <option value="">Select Funding Model</option>
-                {fundingModelOptions.map((option) => {
+              <label htmlFor="programTypeId">Program Type:</label>
+              <select name="programTypeId" ref="_programTypeId" onChange={this.onChangeProgramType} className="form-control">
+                {programTypeOptions.map((option) => {
                   return <option key={option.value} value={option.value}>{option.text}</option>;
                 })}
               </select>
+            </div>
+
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-6">
+                  <Community />
+                </div>
+                <div className="col-md-6">
+                  <PlaceOfService />
+                </div>
+              </div>
             </div>
 
             <button type="Submit" className="btn btn-primary">Save</button>

@@ -34,10 +34,6 @@ class Vendor extends Component {
     _primaryAddress.value = vendor.primaryAddress;
   }
 
-  // componentDidMount() {
-  //   const { _vendorId, _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
-  // }
-
   render() {
     const vendorOptions = this.createSelectOptionsFromVendors(this.vendors);
 
