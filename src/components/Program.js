@@ -107,7 +107,7 @@ class Program extends Component {
 
                 <div className="form-group">
                   <label htmlFor="startDate">Start Date:</label>
-                  <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
+                  <input type="date" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
                 </div>
               </div>
               <div className="col-md-6">
