@@ -6,18 +6,22 @@ import PlaceOfService from './PlaceOfService';
 import Community from './Community';
 
 // import '@progress/kendo-theme-default/dist/all.css';
-// import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
 // import { kendo } from "@progress/kendo-ui";
+// import { Calendar } from '@progress/kendo-dateinputs-react-wrapper';
 
 class Program extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // todo: make start date undefined?
-      startDate: new Date(),
+      programId: undefined,
+      programName: undefined,
+      description: undefined,
+      startDate: undefined,
+      vendorId: undefined,
       fundingModelId: undefined,
-      serviceSubcategoryId: undefined
+      serviceSubcategoryId: undefined,
+      programType: undefined
     };
 
     this.serviceSubcategories = ProgramData.getServiceSubcategories();
@@ -71,6 +75,12 @@ class Program extends Component {
     this.setState({ fundingModelId: serviceSubcategoryId });
   }
 
+  onSubmit(event) {
+    //const serviceSubcategoryId = parseInt(this._serviceSubcategoryId.value, 10);
+    // Read form values and update state
+    this.setState({ fundingModelId: 21 });
+  }
+
   render() {
     const serviceSubcategoryOptions = this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories);
     const fundingModelOptions = this.createSelectOptionsFromFundingModels(this.fundingModels);
@@ -82,42 +92,49 @@ class Program extends Component {
         <div className="panel-body">
           {/* <form> */}
 
-            <div className="form-group">
-              <label htmlFor="programName">Program Name:</label>
-              <input type="text" name="programName" ref="_programName" className="form-control" required placeholder="Program Name" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="description">Description:</label>
-              <textarea name="description" ref="_description" rows="2" className="form-control" required placeholder="Description" />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="startDate">Start Date:</label>
-              <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
-            </div>
-
-            <DropDownList id="serviceSubcategoryId" refId={e => this._serviceSubcategoryId = e} label="Service Subcategory:"
-              onChange={this.onChangeServiceSubcategory} options={serviceSubcategoryOptions} />
-
-            <DropDownList id="fundingModelId" refId={e => this._fundingModelId = e} label="Funding Model:"
-              onChange={this.onChangeFundingModel} options={fundingModelOptions} />
-
-            <DropDownList id="programTypeId" refId="_programTypeId" label="Program Type:"
-              onChange={this.onChangeProgramType} options={programTypeOptions} />
-
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-6">
-                  <Community />
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label htmlFor="programName">Program Name:</label>
+                  <input type="text" name="programName" ref="_programName" className="form-control" required placeholder="Program Name" />
                 </div>
-                <div className="col-md-6">
-                  <PlaceOfService />
+
+                <div className="form-group">
+                  <label htmlFor="description">Description:</label>
+                  <textarea name="description" ref="_description" rows="2" className="form-control" required placeholder="Description" />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="startDate">Start Date:</label>
+                  <input type="text" name="startDate" ref="_startDate" className="form-control" required placeholder="Start Date" />
                 </div>
               </div>
-            </div>
+              <div className="col-md-6">
+                <DropDownList id="serviceSubcategoryId" refId={e => this._serviceSubcategoryId = e} label="Service Subcategory:"
+                  onChange={this.onChangeServiceSubcategory} options={serviceSubcategoryOptions} />
 
-            <button type="Submit" className="btn btn-primary">Save</button>
+                <DropDownList id="fundingModelId" refId={e => this._fundingModelId = e} label="Funding Model:"
+                  onChange={this.onChangeFundingModel} options={fundingModelOptions} />
+              </div>
+            </div>
+          </div>
+
+          <DropDownList id="programTypeId" refId="_programTypeId" label="Program Type:"
+            onChange={this.onChangeProgramType} options={programTypeOptions} />
+
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-6">
+                <Community />
+              </div>
+              <div className="col-md-6">
+                <PlaceOfService />
+              </div>
+            </div>
+          </div>
+
+          <button type="Submit" submit={this.onSubmit} className="btn btn-primary">Save</button>
           {/* </form> */}
         </div>
       </div>
