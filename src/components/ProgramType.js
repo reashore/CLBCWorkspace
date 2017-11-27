@@ -5,13 +5,11 @@ import DropDownList from '../common/DropDownList';
 import PlaceOfService from './PlaceOfService';
 import Community from './Community';
 
-
 class ProgramType extends Component {
   constructor(props) {
     super(props);
 
     this.programTypes = ProgramData.getProgramTypes();
-
   }
 
   createSelectOptionsFromProgramTypes(programTypes) {
