@@ -4,24 +4,61 @@ import Vendor from './Vendor';
 import Program from './Program';
 
 class App extends Component {
-  render() {
-    // eslint-disable-next-line
+  constructor(props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    const program = this.getProgramValues();
+    const message = this.formatProgramValues(program);
+
+    alert(message);
+  }
+
+  getProgramValues() {
+    const createProgramForm = document.forms.createDraftForm;
+
     let program = {
-      programId: 12345,
-      programName: "Big Project One",
-      description: "Long description",
-      startDate: "2017-09-01",
-      fundingModelId: 100,
-      vendorId: 6,
-      serviceSubcategoryId: 5,
-      programType: "Community"
+      programId: 12345,   // faked for now
+      programName: createProgramForm.programName.value,
+      description: createProgramForm.description.value,
+      startDate: createProgramForm.startDate.value,
+      fundingModelId: createProgramForm.fundingModelId.value,
+      vendorId: createProgramForm.vendorId.value,
+      serviceSubcategoryId: createProgramForm.serviceSubcategoryId.value,
+      programTypeId: createProgramForm.programTypeId.value
     };
 
+    return program;
+  }
+
+  formatProgramValues(program) {
+    const eol = `
+    `;
+    let message = `Form values:${eol}`;
+
+    message += `Program Id = ${program.programId},${eol}`;
+    message += `Program Name = ${program.programName},${eol}`;
+    message += `Vendor Id = ${program.vendorId},${eol}`;
+    message += `Description = ${program.description},${eol}`;
+    message += `Start Date = ${program.startDate},${eol}`;
+    message += `Service Subcategory Id = ${program.serviceSubcategoryId},${eol}`;
+    message += `Funding Model Id = ${program.fundingModelId},${eol}`;
+    message += `Program Type = ${program.programTypeId},${eol}`;
+
+    return message;
+  }
+
+  render() {
     return (
       <div className="container">
         <h1>CLBC MyWorkspace</h1>
         <h2>Create Draft Program</h2>
-        <form>
+        <form id="createDraftForm" onSubmit={this.onSubmit}>
           <Vendor />
           <Program />
         </form>

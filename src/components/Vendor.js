@@ -43,7 +43,6 @@ class Vendor extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Vendors</div>
         <div className="panel-body">
-          {/* <form> */}
           <DropDownList id="vendorId" refId={e => this._vendorId = e} label="Vendor Name:" onChange={this.onChange} options={vendorOptions} />
 
           <div className="container-fluid">
@@ -70,8 +69,6 @@ class Vendor extends Component {
 
             </div>
           </div>
-
-          {/* </form> */}
         </div>
       </div>
     );

@@ -90,8 +90,6 @@ class Program extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Program</div>
         <div className="panel-body">
-          {/* <form> */}
-
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-6">
@@ -134,8 +132,7 @@ class Program extends Component {
             </div>
           </div>
 
-          <button type="Submit" submit={this.onSubmit} className="btn btn-primary">Save</button>
-          {/* </form> */}
+          <button type="Submit" className="btn btn-primary">Save</button>
         </div>
       </div>
     );
