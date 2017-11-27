@@ -20,9 +20,9 @@ class App extends Component {
   }
 
   getProgramValues() {
-    const createProgramForm = document.forms.createDraftForm;
+    const createProgramForm = document.forms.createProgramForm;
 
-    let program = {
+    const program = {
       programId: 12345,
       programName: createProgramForm.programName.value,
       description: createProgramForm.description.value,
@@ -30,7 +30,9 @@ class App extends Component {
       fundingModelId: createProgramForm.fundingModelId.value,
       vendorId: createProgramForm.vendorId.value,
       serviceSubcategoryId: createProgramForm.serviceSubcategoryId.value,
-      programTypeId: createProgramForm.programTypeId.value
+      programTypeId: createProgramForm.programTypeId.value,
+      cpdAreaId: createProgramForm.cpdAreaId.value,
+      placeOfServiceId: createProgramForm.placeOfServiceId.value
     };
 
     return program;
@@ -60,7 +62,7 @@ class App extends Component {
       <div className="container">
         <h1>CLBC MyWorkspace</h1>
         <h2>Create Draft Program</h2>
-        <form id="createDraftForm" onSubmit={this.onSubmit}>
+        <form id="createProgramForm" onSubmit={this.onSubmit}>
           <Vendor />
           <Program />
         </form>

@@ -7,15 +7,7 @@ class Community extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      cpdAreaId: undefined,
-      cpdSubareaId: undefined,
-      communityid: undefined
-    }
-
     this.cpdAreas = CommunityData.getCpdAreas();
-
-    this.onChange = this.onChange.bind(this);
   }
 
   createSelectOptionsFromCpdAreas(vendors) {
@@ -27,11 +19,6 @@ class Community extends Component {
     });
   }
 
-  onChange(event) {
-    const cpdAreaId = parseInt(this._cpdAreaId.value, 10);
-    this.setState({ cpdAreaId: cpdAreaId })
-  }
-
   render() {
     const cpdAreaOptions = this.createSelectOptionsFromCpdAreas(this.cpdAreas);
 
@@ -39,7 +26,7 @@ class Community extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Community</div>
         <div className="panel-body">
-            <DropDownList id="cpdAreaId" refId={e => this._cpdAreaId = e} label="CPD Area:" onChange={this.onChange} options={cpdAreaOptions} />
+            <DropDownList id="cpdAreaId" label="CPD Area:" options={cpdAreaOptions} />
         </div>
       </div>
     );

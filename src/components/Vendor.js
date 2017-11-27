@@ -7,10 +7,6 @@ class Vendor extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      vendorId: undefined
-    }
-
     this.vendors = VendorData.getVendors();
     this.onChange = this.onChange.bind(this);
   }
@@ -27,8 +23,6 @@ class Vendor extends Component {
   onChange(event) {
     const vendorId = parseInt(this._vendorId.value, 10);
     const vendor = this.vendors.find(vendor => vendor.vendorId === vendorId);
-
-    this.setState({ vendorId: vendorId });
 
     const { _ocgNumber, _managingQsArea, _primaryAddress } = this.refs;
     _ocgNumber.value = vendor.ocgNumber;
