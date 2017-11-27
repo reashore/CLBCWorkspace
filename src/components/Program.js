@@ -132,7 +132,7 @@ class Program extends Component {
             </div>
           </div>
 
-          <button type="Submit" className="btn btn-primary">Save</button>
+          <button type="Submit" className="btn btn-primary">Save Program</button>
         </div>
       </div>
     );

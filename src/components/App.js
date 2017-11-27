@@ -23,7 +23,7 @@ class App extends Component {
     const createProgramForm = document.forms.createDraftForm;
 
     let program = {
-      programId: 12345,   // faked for now
+      programId: 12345,
       programName: createProgramForm.programName.value,
       description: createProgramForm.description.value,
       startDate: createProgramForm.startDate.value,
@@ -43,12 +43,14 @@ class App extends Component {
 
     message += `Program Id = ${program.programId},${eol}`;
     message += `Program Name = ${program.programName},${eol}`;
-    message += `Vendor Id = ${program.vendorId},${eol}`;
     message += `Description = ${program.description},${eol}`;
     message += `Start Date = ${program.startDate},${eol}`;
+    message += `Vendor Id = ${program.vendorId},${eol}`;
     message += `Service Subcategory Id = ${program.serviceSubcategoryId},${eol}`;
     message += `Funding Model Id = ${program.fundingModelId},${eol}`;
-    message += `Program Type = ${program.programTypeId},${eol}`;
+    message += `Program Type Id = ${program.programTypeId},${eol}`;
+    message += `CPD Area Id = ${program.cpdAreaId},${eol}`;
+    message += `Place Of Service Id = ${program.placeOfServiceId},${eol}`;
 
     return message;
   }

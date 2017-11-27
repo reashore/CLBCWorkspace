@@ -37,11 +37,9 @@ class PlaceOfService extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Place of Service</div>
         <div className="panel-body">
-          {/* <form> */}
           <DropDownList id="placeOfServiceId" refId={e => this._placeOfServiceId = e} label="Place of Service:" onChange={this.onChange} options={placeOfServiceOptions} />
 
           <button type="Submit" className="btn btn-primary">Create Place of Service</button>
-          {/* </form> */}
         </div>
       </div>
     );

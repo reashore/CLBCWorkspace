@@ -39,9 +39,7 @@ class Community extends Component {
       <div className="panel panel-primary">
         <div className="panel-heading">Community</div>
         <div className="panel-body">
-          {/* <form> */}
             <DropDownList id="cpdAreaId" refId={e => this._cpdAreaId = e} label="CPD Area:" onChange={this.onChange} options={cpdAreaOptions} />
-          {/* </form> */}
         </div>
       </div>
     );
