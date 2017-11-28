@@ -13,7 +13,9 @@ class Program extends Component {
     super(props);
 
     this.serviceSubcategories = ProgramData.getServiceSubcategories();
-    this.fundingModels = ProgramData.getFundingModels();
+    this.fundingModels = ProgramData.getFundingModels(1);
+
+    this.onChange =this.onChange.bind(this);
   }
 
   createSelectOptionsFromFundingModels(fundingModels) {
@@ -32,6 +34,13 @@ class Program extends Component {
         text: serviceSubcategory.serviceSubcategory
       };
     });
+  }
+
+  onChange(event) {
+    const temp = this._serviceSubcategoryId;
+    const serviceSubcategoryId = parseInt(this._serviceSubcategoryId.value, 10);
+    this.fundingModels = ProgramData.getFundingModels(serviceSubcategoryId);
+    this.forceUpdate();
   }
 
   render() {
@@ -61,7 +70,12 @@ class Program extends Component {
                 </div>
               </div>
               <div className="col-md-6">
-                <DropDownList id="serviceSubcategoryId" label="Service Subcategory:" options={serviceSubcategoryOptions} />
+                {/* <DropDownList id="serviceSubcategoryId" label="Service Subcategory:" options={serviceSubcategoryOptions} /> */}
+                <DropDownList id="serviceSubcategoryId" refId={e => this._serviceSubcategoryId = e} label="Service Subcategory:"
+                    onChange={this.onChange} options={serviceSubcategoryOptions} />
+
+                {/* <DropDownList id="vendorId" refId={e => this._vendorId = e} label="Vendor Name:" onChange={this.onChange} options={vendorOptions} /> */}
+
 
                 <DropDownList id="fundingModelId" label="Funding Model:" options={fundingModelOptions} />
               </div>
