@@ -21,7 +21,7 @@ class ProgramData {
     for (let n = 1; n <= 6; n++) {
       let element = {
         fundingModelId: n,
-        fundingModel: `Funding Model ${n} (Subcategory ${serviceSubcategory})`
+        fundingModel: `Funding Model ${n} (for Service Subcategory ${serviceSubcategory})`
       };
 
       fundingModelArray.push(element);
